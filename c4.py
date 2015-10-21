@@ -19,7 +19,37 @@ def draw_board(board):
     Arg: Board representation as number string
     Ret: Prints the board out, returns nothing
     """
-    pass
+    board_counter = {}
+    board_representation = create_empty_board()
+    count = 0
+    for letter in board:
+        if count % 2 == 0:
+            count += 1
+            piece = 'x'
+        elif count % 2 == 1:
+            count += 1
+            piece = 'o'
+        if letter not in board_counter:
+            board_counter[letter] = 1
+            row_index = board_counter[letter] - 1
+            column_index = int(letter) - 1
+            board_representation[row_index][column_index].replace(' ', piece)
+        else:
+            row_index = board_counter[letter] - 1
+            board_counter[letter] += 1
+            board_representation[row_index][column_index].replace(' ', piece)
+    print(board_representation)
+            
+        
+            
+        
+    print("""
+|%s|%s|%s|%s|%s|%s|%s|
+|%s|%s|%s|%s|%s|%s|%s|
+|%s|%s|%s|%s|%s|%s|%s|
+|%s|%s|%s|%s|%s|%s|%s|
+|%s|%s|%s|%s|%s|%s|%s|
+|%s|%s|%s|%s|%s|%s|%s|""")
 
 def board_counts(board):
     board_count = {}
@@ -52,7 +82,7 @@ def game_over(board):
     Arg: Board representation as number string
     Ret: True or false, based on if a player has connect four
     """
-    if(False):
+    if (False):
         pass
     else:
         return(False)
@@ -63,7 +93,10 @@ def legality_check(board, move):
     Ret: True or false, based on if the move is legal
     """
     count = board_counts(board)
-    pass
+    if count[move] <=5:
+        return True
+    else:
+        return False
 
 def main():
     done = False
@@ -75,15 +108,16 @@ def main():
         if answer.upper() == "!START2P":
             START_2P()
         if answer.upper() == "!QUIT":
+            print("Thanks for playing Connect Four. Goodbye!")
             break
         else:
             print("I didn't understand that. Please try again!")
-        print("Thanks for playing Connect Four. Goodbye!")
+        
 
 
 def tests():
     empty_board = create_empty_board()
-    test_board = ''
+    test_board = '1236134132'
     print("This should print an empty board:")
     print(empty_board)
     print("This uses the draw_board():")
