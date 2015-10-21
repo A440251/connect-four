@@ -33,11 +33,11 @@ def draw_board(board):
             board_counter[letter] = 1
             row_index = board_counter[letter] - 1
             column_index = int(letter) - 1
-            board_representation[row_index][column_index].replace(' ', piece)
+            board_representation[row_index][column_index] = piece
         else:
             row_index = board_counter[letter] - 1
             board_counter[letter] += 1
-            board_representation[row_index][column_index].replace(' ', piece)
+            board_representation[row_index][column_index] = piece
     print(board_representation)
             
         
@@ -125,4 +125,5 @@ def tests():
 
 if __name__ == "__main__":
     tests()
-    main()
+    print("---END OF TESTS---")
+    #main()
