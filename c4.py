@@ -38,18 +38,14 @@ def draw_board(board):
             row_index = board_counter[letter] - 1
             board_counter[letter] += 1
             board_representation[row_index][column_index] = piece
+
+    print("Print board_representation:")
     print(board_representation)
-            
-        
-            
-        
-    print("""
-|%s|%s|%s|%s|%s|%s|%s|
-|%s|%s|%s|%s|%s|%s|%s|
-|%s|%s|%s|%s|%s|%s|%s|
-|%s|%s|%s|%s|%s|%s|%s|
-|%s|%s|%s|%s|%s|%s|%s|
-|%s|%s|%s|%s|%s|%s|%s|""")
+    
+    for i in range(6):
+        print('|'.join(board_representation[5-i]))
+    print("1 2 3 4 5 6 7")
+    print("here it was!")
 
 def board_counts(board):
     board_count = {}
@@ -117,7 +113,7 @@ def main():
 
 def tests():
     empty_board = create_empty_board()
-    test_board = '1236134132'
+    test_board = '123615734132577'
     print("This should print an empty board:")
     print(empty_board)
     print("This uses the draw_board():")
